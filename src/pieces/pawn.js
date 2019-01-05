@@ -12,18 +12,18 @@ export default class Pawn extends Piece {
   isMovePossible(src, dest, isDestEnemyOccupied){
 
     if(this.player === 1){
-      if((dest === src - 8 && !isDestEnemyOccupied) || (dest === src - 16 && this.initialPositions[1].indexOf(src) !== -1)){
+      if((dest === src - 6 && !isDestEnemyOccupied) || (dest === src - 12 && this.initialPositions[1].indexOf(src) !== -1)){
         return true;
       }
-      else if(isDestEnemyOccupied && (dest === src - 9 || dest === src - 7)){
+      else if(isDestEnemyOccupied && (dest === src - 7 || dest === src - 5)){
         return true;
       }
     }
     else if(this.player === 2){
-      if((dest === src + 8 && !isDestEnemyOccupied) || (dest === src + 16 && this.initialPositions[2].indexOf(src) !== -1)){
+      if((dest === src + 6 && !isDestEnemyOccupied) || (dest === src + 12 && this.initialPositions[2].indexOf(src) !== -1)){
         return true;
       }
-      else if(isDestEnemyOccupied && (dest === src + 9 || dest === src + 7)){
+      else if(isDestEnemyOccupied && (dest === src + 7 || dest === src + 5)){
         return true;
       }
     }
@@ -37,11 +37,11 @@ export default class Pawn extends Piece {
    * @return {[type]}      [description]
    */
   getSrcToDestPath(src, dest){
-    if(dest === src - 16){
-      return [src - 8];
+    if(dest === src - 12){
+      return [src - 6];
     }
-    else if(dest === src + 16){
-      return [src + 8];
+    else if(dest === src + 12){
+      return [src + 6];
     }
     return [];
   }

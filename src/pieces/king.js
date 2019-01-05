@@ -6,14 +6,15 @@ export default class King extends Piece {
   }
 
   isMovePossible(src, dest){
-    return (src - 9 === dest || 
-      src - 8 === dest || 
-      src - 7 === dest || 
-      src + 1 === dest || 
-      src + 9 === dest || 
-      src + 8 === dest || 
-      src + 7 === dest || 
-      src - 1 === dest);
+    if(!this.state.flipped){
+      let mod = src % 6;
+      let diff = 6 - mod;
+      return (dest >= (src - mod) && dest < (src + diff));
+    }
+    else{
+      return Math.abs(src - dest) % 6 === 0; 
+    }
+
   }
 
   /**
@@ -21,6 +22,27 @@ export default class King extends Piece {
    * @return {[]}
    */
   getSrcToDestPath(src, dest){
-    return [];
+    let path = [], pathStart, pathEnd, incrementBy;
+    if(src > dest){
+      pathStart = dest;
+      pathEnd = src;
+    }
+    else{
+      pathStart = src;
+      pathEnd = dest;
+    }
+    if(Math.abs(src - dest) % 6 === 0){
+      incrementBy = 6;
+      pathStart += 6;
+    }
+    else{
+      incrementBy = 1;
+      pathStart += 1;
+    }
+
+    for(let i = pathStart; i < pathEnd; i+=incrementBy){
+      path.push(i);
+    }
+    return path;
   }
 }
