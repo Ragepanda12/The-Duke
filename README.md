@@ -1,5 +1,12 @@
-# React Chess
-Two player chess game built with React js.
+# The Duke
+Two player board game built with React js. Based off react-chess.
+
+## Quickstart
+npm install
+npm start
+
+
+## Old README below.
 
 ## How It's Build
 The components boilerplate sturcture consisting of Game, Board and Square is same as of Facebook [tic tac toe tutorial](https://facebook.github.io/react/tutorial/tutorial.html).
