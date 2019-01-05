@@ -14,14 +14,14 @@ export default class Pawn extends Piece {
     }
     else{
       if(this.state.player === 1){
-        return src + 12 === dest ||
+        return src - 12 === dest ||
         src + 5 === dest ||
         src + 7 === dest ||
         src - 5 === dest ||
         src - 7 === dest;
       }
       else{
-        return src - 12 === dest ||
+        return src + 12 === dest ||
         src + 5 === dest ||
         src + 7 === dest ||
         src - 5 === dest ||

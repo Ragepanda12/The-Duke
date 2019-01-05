@@ -23,7 +23,7 @@ export default class Game extends React.Component {
     const squares = this.state.squares.slice();
     
     if(this.state.sourceSelection === -1){
-      if(!squares[i] || squares[i].player !== this.state.player){
+      if(!squares[i] || squares[i].state.player !== this.state.player){
         this.setState({status: "Wrong selection. Choose player " + this.state.player + " pieces."});
         squares[i]? delete squares[i].style.backgroundColor: null;
       }
@@ -38,7 +38,7 @@ export default class Game extends React.Component {
 
     else if(this.state.sourceSelection > -1){
       delete squares[this.state.sourceSelection].style.backgroundColor;
-      if(squares[i] && squares[i].player === this.state.player){
+      if(squares[i] && squares[i].state.player === this.state.player){
         this.setState({
           status: "Wrong selection. Choose valid source and destination again.",
           sourceSelection: -1,
@@ -56,7 +56,7 @@ export default class Game extends React.Component {
 
         if(isMovePossible && isMoveLegal){
           if(squares[i] !== null){
-            if(squares[i].player === 1){
+            if(squares[i].state.player === 1){
               whiteFallenSoldiers.push(squares[i]);
             }
             else{

@@ -1,10 +1,11 @@
 export default class Piece {
   constructor(player, iconUrl){
   	this.state = {
+  	  player: 0,
       flipped: false
     }
-    this.player = player;
-    this.style = {backgroundImage: "url('"+iconUrl+"')"};
+    this.state.player = player;
+    this.style = {backgroundImage: "url('"+iconUrl+"')", backgroundSize: "cover"};
   }
 
   flipPiece = () => {
