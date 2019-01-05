@@ -3,6 +3,7 @@ Two player board game built with React js. Based off react-chess.
 
 ## Quickstart
 npm install
+
 npm start
 
 
