@@ -5,16 +5,25 @@ export default class King extends Piece {
     super(player, (player === 1? "https://upload.wikimedia.org/wikipedia/commons/4/42/Chess_klt45.svg" : "https://upload.wikimedia.org/wikipedia/commons/f/f0/Chess_kdt45.svg"));
   }
 
-  isMovePossible(src, dest){
+  possibleSquares(src){
+    let mod = src % 6;
+    var possibleSquares = [mod];
     if(!this.state.flipped){
-      let mod = src % 6;
-      let diff = 6 - mod;
-      return (dest >= (src - mod) && dest < (src + diff));
+      let diff = 6 - mod;  
+      for(var i = (src - mod); i < (src + diff); i++){
+        possibleSquares.push(i);
+      }
     }
     else{
-      return Math.abs(src - dest) % 6 === 0; 
+      for(var i = 0; i < 6; i++){
+        possibleSquares.push(mod + i*6);
+      }
     }
+    return possibleSquares; 
+  }
 
+  isMovePossible(src, dest){
+    return this.possibleSquares(src).includes(dest);
   }
 
   /**

@@ -99,8 +99,6 @@ export default class Game extends React.Component {
     let isLegal = true;
     for(let i = 0; i < srcToDestPath.length; i++){
       if(this.state.squares[srcToDestPath[i]] !== null){
-        console.log("Not legal");
-        console.log(this.state.squares[srcToDestPath[i]]);
         isLegal = false;
       }
     }
