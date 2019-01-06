@@ -7,7 +7,7 @@ export default class King extends Piece {
 
   possibleSquares(src){
     let mod = src % 6;
-    var possibleSquares = [mod];
+    var possibleSquares = [];
     if(!this.state.flipped){
       let diff = 6 - mod;  
       for(var i = (src - mod); i < (src + diff); i++){

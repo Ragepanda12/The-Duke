@@ -14,16 +14,20 @@ export default class Board extends React.Component {
   }
 
   render() {
+  	var counter = 0;
     const board = [];
     for(let i = 0; i < 6; i++){
       const squareRows = [];
       for(let j = 0; j < 6; j++){
-        const squareShade = (isEven(i) && isEven(j)) || (!isEven(i) && !isEven(j))? "light-square" : "dark-square";
+      	var squareShade = (isEven(i) && isEven(j)) || (!isEven(i) && !isEven(j))? "light-square" : "dark-square";
+      	if(this.props.possibleSquares && this.props.possibleSquares.includes(counter)){
+      		squareShade = "blue-square";
+      	}
         squareRows.push(this.renderSquare((i*6) + j, squareShade));
+        counter++;
       }
       board.push(<div className="board-row">{squareRows}</div>)
     }
-
     return (
       <div>
         {board}

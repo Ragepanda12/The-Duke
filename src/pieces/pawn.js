@@ -7,17 +7,18 @@ export default class Pawn extends Piece {
 
   possibleSquares(src){
     if(!this.state.flipped){
-      return [src-6, src-1, src+1, src+6];
+      return new Array(src-6, src-1, src+1, src+6);
     } else {
       if(this.state.player === 1){
-        return [src-12, src-7, src-5, src+5, src+7];
+        return new Array(src-12, src-7, src-5, src+5, src+7);
       } else {
-        return [src-7, src-5, src+5, src+7, src+12];
+        return new Array(src-7, src-5, src+5, src+7, src+12);
       }
     }
   }
 
   isMovePossible(src, dest){
+    console.log(this.possibleSquares(src));
     return this.possibleSquares(src).includes(dest);
   }
 

@@ -28,7 +28,13 @@ export default class Game extends React.Component {
         squares[i]? delete squares[i].style.backgroundColor: null;
       }
       else{
-        squares[i].style = {...squares[i].style, backgroundColor: "RGB(111,143,114)"}; // Emerald from http://omgchess.blogspot.com/2015/09/chess-board-color-schemes.html
+        /*squares[i].style = {...squares[i].style, backgroundColor: "RGB(111,143,114)"}; // Emerald from http://omgchess.blogspot.com/2015/09/chess-board-color-schemes.html
+        let ;
+        for(var j = 0; j < movePossibilities.length; j++){
+          if(movePossibilities[j] >= 0 && movePossibilities[j] < 64){
+            squares[movePossibilities[j]].style = {...squares[movePossibilities[j]].style , backGroundColor: "RGB(000,000,000)"};
+          }
+        }*/
         this.setState({
           status: "Choose destination for the selected piece",
           sourceSelection: i
@@ -105,8 +111,10 @@ export default class Game extends React.Component {
     return isLegal;
   }
 
-  render() {
 
+
+  render() {
+    let movePossibilities = this.state.sourceSelection !== -1 ? this.state.squares[this.state.sourceSelection].possibleSquares(this.state.sourceSelection) : null;
     return (
       <div>
         <div className="game">
@@ -114,6 +122,7 @@ export default class Game extends React.Component {
             <Board 
             squares = {this.state.squares}
             onClick = {(i) => this.handleClick(i)}
+            possibleSquares = {movePossibilities}
             />
           </div>
           <div className="game-info">
